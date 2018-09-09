@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android = "http://schemas.android.com/apk/res/android">
+
+    <!--<data>-->
+        <!--<variable-->
+            <!--name="feed"-->
+            <!--type="com.example.viredapp.model.FeedViewModel"/>-->
+    <!--</data>-->
+
+
+    <RelativeLayout
+        android:id="@+id/postContainer"
+        android:layout_margin="10dp"
+        android:elevation="2dp"
+        android:background="@drawable/bg_parent_rounded_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--TODO:Change to Circle Image View-->
+        <ImageView
+            android:id="@+id/feedImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rachel"
+            />
+        <LinearLayout
+            android:id="@+id/postDetail_1"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/feedImage"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:id="@+id/username_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/LabelStyle"
+                android:textSize="15sp"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:text="Rachel"/>
+            <LinearLayout
+                android:id="@+id/postDetail_2"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/postLocation"
+                    android:text="New York City"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/postTime"
+                    android:text="12 mins ago"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/postImage"
+            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/postDetail_1"
+            android:src="@drawable/fb_bg"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="6dp"
+           />
+
+
+
+    </RelativeLayout>
+    
+</layout>

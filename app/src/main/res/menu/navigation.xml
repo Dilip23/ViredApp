@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/feedFragment"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="always|withText"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/friendsFragment"
+        android:icon="@drawable/ic_user_friends"
+        app:showAsAction="always|withText"
+
+        android:title="Friends" />
+
+    <item
+        android:id="@+id/camera"
+        app:showAsAction="always"
+        android:title=""
+        android:icon="@drawable/ic_baseline_camera_24px" />
+
+    <item
+        android:id="@+id/usersFragment"
+        android:icon="@drawable/ic_globe_americas"
+        app:showAsAction="always|withText"
+        android:title="Public" />
+
+    <item
+        android:id="@+id/requestFragment"
+        android:icon="@drawable/ic_user_plus"
+        app:showAsAction="always|withText"
+        android:title="Requests"/>
+
+</menu>

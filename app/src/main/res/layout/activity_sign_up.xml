@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ToolbarStyle">
+
+            <!--TODO:Put Vired Typography Title-->
+        </android.support.v7.widget.Toolbar>
+
+
+        <RelativeLayout
+            android:id="@+id/containerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_margin="@dimen/container_layout_margin">
+
+            <TextView
+                android:id="@+id/signup_title"
+                style="@style/LabelStyle"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:text="@string/signup"
+                android:textColor="@color/orange" />
+
+
+
+            <EditText
+                android:id="@+id/et_full_name"
+                style="@style/EditTextStyle"
+                android:layout_below="@id/signup_title"
+                android:layout_marginTop="16dp"
+                android:hint="@string/username_hint"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/et_email_address"
+                style="@style/EditTextStyle"
+                android:layout_below="@id/et_full_name"
+                android:layout_marginTop="16dp"
+                android:hint="@string/email_address_hint"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/EditTextStyle"
+                android:layout_below="@id/et_email_address"
+                android:layout_marginTop="16dp"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword" />
+
+
+            <EditText
+                android:id="@+id/location"
+                style="@style/EditTextStyle"
+                android:layout_below="@id/password"
+                android:layout_marginTop="16dp"
+                android:hint="@string/location_txt"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/uploadCamera"
+                android:layout_width="125dp"
+                style="@style/StrokeButtonStyle"
+                android:drawableLeft="@drawable/ic_baseline_camera_24px"
+                android:drawableTint="@color/orange"
+                android:paddingLeft="5dp"
+                android:layout_alignParentStart="true"
+                android:text="@string/camera"
+                android:layout_below="@+id/location"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true" />
+            <Button
+                android:id="@+id/uploadGallery"
+                android:layout_width="125dp"
+                style="@style/StrokeButtonStyle"
+                android:text="@string/gallery"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="50dp"
+                android:paddingLeft="5dp"
+                android:drawableLeft="@drawable/gallery"
+                android:drawableTint="@color/orange"
+                android:layout_toRightOf="@id/uploadCamera"
+                android:layout_below="@id/location"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="30dp" />
+
+            <Button
+                android:id="@+id/btn_signup"
+                style="@style/SolidButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_below="@id/uploadCamera"
+                android:layout_marginTop="22dp"
+                android:text="@string/signup_button_label" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
