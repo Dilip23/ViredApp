@@ -26,13 +26,15 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
+
+//TODO:1.SetUp Navigation UI properly for displaying fragments and display feed in db
+
 //TODO:Complete Login Display if user not logged in
 //TODO:Use Repository and Background classes and APIs to retrieve data
 //TODO:Check for Errors and incomplete code completion
 //TODO:Check for other incomplete work
 //TODO:Store in database
-//TODO:Use SharedPreferences Perfectly
-//TODO:Complete UI,ViewModel,Databinding,PagedList,PagedList with DataSource.Factory in Dao
+//TODO:Complete UI,ViewModel,PagedList
 
 class MainActivity : AppCompatActivity() {
 

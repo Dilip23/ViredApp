@@ -14,7 +14,7 @@
 
 
 
-    <!--Feed view colors -->
+    <!--feed view colors -->
     <color name="white">#ffffff</color>
     <color name="feed_bg">#d3d6db</color>
     <color name="feed_item_bg">#ffffff</color>

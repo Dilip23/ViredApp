@@ -26,4 +26,5 @@
         android:name="com.example.viredapp.ui.UsersFragment"
         android:label="users_fragment"
         tools:layout="@layout/users_fragment" />
+
 </navigation>

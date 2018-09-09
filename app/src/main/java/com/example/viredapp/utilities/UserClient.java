@@ -1,14 +1,10 @@
 package com.example.viredapp.utilities;
 
-import android.arch.paging.PagedList;
-
-import com.example.viredapp.model.Feed;
+import com.example.viredapp.model.FeedResult;
 import com.example.viredapp.model.LoggedInUser;
 import com.example.viredapp.model.Login;
 import com.example.viredapp.model.PostFeed;
 import com.example.viredapp.model.User;
-
-import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -19,7 +15,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
@@ -44,14 +39,14 @@ public interface UserClient {
     @GET("profile/")
     Call<LoggedInUser> getUserData(@Query("search") String username);
 
-    //TODO:Post Feed Items
+    //TODO:Post feed Items
     @POST("feed/")
     Call<ResponseBody> postFeedItem(@Body PostFeed postFeed);
 
-    //TODO:Show User feed ,;Use @Url to download Media Files for Feed
+    //TODO:Show User feed ,;Use @Url to download Media Files for feed
     @GET("/feed/")
-    Call<List<Feed>> getFeed(@Query("limit") Integer limit,
-                       @Query("offset") Integer offset);
+    Call<FeedResult> getFeed(@Query("limit") Integer limit,
+                             @Query("offset") Integer offset);
 
     //Download Media
     @GET()

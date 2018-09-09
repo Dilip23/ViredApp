@@ -1,35 +1,36 @@
 package com.example.viredapp.services
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
-import android.os.AsyncTask
-import android.util.Log
-import com.bumptech.glide.load.engine.Resource
-import com.example.viredapp.database.AppLocalCache
+import android.os.HandlerThread
 import com.example.viredapp.db.FeedDao
 import com.example.viredapp.db.feed
 import com.example.viredapp.model.Feed
+import com.example.viredapp.model.FeedResult
 import com.example.viredapp.ui.FeedBoundaryCallBack
 import com.example.viredapp.utilities.ApiClient
+import com.example.viredapp.utilities.DateConverter
 import com.example.viredapp.utilities.UserClient
-import org.jetbrains.annotations.Async
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
+import java.sql.Date
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
+
 
 class FeedRepository (
         private val feedDao: FeedDao
 ){
 
 
-    private var lastRequestedItem = 1
+    private var lastRequestedItem = 0
     private var isRequestInProgress = false
-
-
+    var executor = Executors.newSingleThreadExecutor()
     companion object {
+        lateinit var feedList:List<Feed>
         private const val DEFAULT_NETWORK_PAGE_SIZE = 50
         private const val DEAULT_DATABASE_PAGE_SIZE = 20
         private val apiClient = ApiClient.getApiClient().create(UserClient::class.java)
@@ -47,27 +48,41 @@ class FeedRepository (
         Timber.d("showFeed() method called")
         val dataSourceFactory = feedDao.getAllFeed()
         val boundaryCallback = FeedBoundaryCallBack(id = lastRequestedItem)
-        val builder = LivePagedListBuilder(dataSourceFactory, DEAULT_DATABASE_PAGE_SIZE)
+        val config = PagedList.Config.Builder()
+                .setPageSize(DEAULT_DATABASE_PAGE_SIZE)
+                .build()
+        val builder = LivePagedListBuilder(dataSourceFactory, config)
                 .setBoundaryCallback(boundaryCallback)
                 .build()
         return builder
-
     }
 
     public fun getFeedResponse() {
+        Timber.i("getFeedResponse()")
         if(isRequestInProgress) return
         isRequestInProgress = true
-        val call: Call<List<Feed>> = apiClient.getFeed(DEFAULT_NETWORK_PAGE_SIZE, lastRequestedItem)
-        call.enqueue(object :Callback<List<Feed>>{
-            override fun onFailure(call: Call<List<Feed>>?, t: Throwable?) {
+        val call: Call<FeedResult> = apiClient.getFeed(DEFAULT_NETWORK_PAGE_SIZE,lastRequestedItem)
+        call.enqueue(object :Callback<FeedResult>{
+            override fun onFailure(call: Call<FeedResult>?, t: Throwable?) {
                 Timber.d(t.toString())
             }
 
-            override fun onResponse(call: Call<List<Feed>>?, response: Response<List<Feed>>?) {
+            override fun onResponse(call: Call<FeedResult>?, response: Response<FeedResult>?) {
                 if(response!!.isSuccessful){
-                    lastRequestedItem += response?.body()!!.size
+                    //lastRequestedItem += response?.body()!!.size
+                    feedList = response?.body()!!.feedList
+                    for (i in feedList){
+                        var name = i.username
+                        var media = i.mUrl
+                        var loc = i.location
+                        var like = i.likesCount.toString()
+                        var timeStamp = i.timeStamp
+                        var id = i.id.toLong()
+                        var res:feed = feed(id,name,media,timeStamp,loc,like)
+                        var check_r =  addResponseTODB(res)
+                        Timber.d("$check_r")
+                    }
                     Timber.i("Successful Response -> Adding to DB")
-                    addResponseTODB(response.body()!! as List<feed>)
                     isRequestInProgress = false
                 }else{
                     when(response.code()){
@@ -81,14 +96,23 @@ class FeedRepository (
         })
     }
 
-    private fun addResponseTODB(items:List<feed>) = feedDao.insert(items)
+    private fun addResponseTODB(items:feed):Long{
+        var r:Long = 0
+        executor.execute( {
+           var c_r =  feedDao.insert(items)
+            Timber.d(r.toString())
+            r = c_r
+        })
+        Timber.d("Feed object Inserted into Database")
+        return r
+    }
 
-    //public fun loadFromDB():LiveData<PagedList<Feed>> =  feedDao.getAllFeed()
+    //public fun loadFromDB():LiveData<PagedList<feed>> =  feedDao.getAllFeed()
 
 
     //TODO:Download Media and Save it in Local Storage
 
-    //TODO:Post User Feed
+    //TODO:Post User feed
 
     //{/feed/{id}}
     //TODO:Update user post
@@ -97,9 +121,5 @@ class FeedRepository (
 
     //TODO:Delete user post
     //DeletePost
-
-
-
-
 
 }

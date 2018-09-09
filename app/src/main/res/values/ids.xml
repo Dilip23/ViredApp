@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="profileImage" type="id">profileImage</item>
+    <item name="postDetail_1" type="id">postDetail_1</item>
+</resources>

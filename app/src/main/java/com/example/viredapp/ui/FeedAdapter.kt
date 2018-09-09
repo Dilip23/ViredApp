@@ -12,9 +12,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.viredapp.R
 import com.example.viredapp.db.feed
-import com.example.viredapp.model.Feed
 
-class FeedAdapter : PagedListAdapter<Feed,FeedAdapter.ViewHolder>(FeedDiffCallBack()){
+class FeedAdapter : PagedListAdapter<feed,FeedAdapter.ViewHolder>(FeedDiffCallBack()){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
                 LayoutInflater.from(parent.context)
@@ -37,7 +36,7 @@ class FeedAdapter : PagedListAdapter<Feed,FeedAdapter.ViewHolder>(FeedDiffCallBa
         private val time:TextView = itemView.findViewById(R.id.postTime)
         private val post:ImageView = itemView.findViewById(R.id.postImage)
 
-        fun bind(feed: Feed?) = with(itemView){
+        fun bind(feed: feed) = with(itemView){
             //TODO:Bind Data with View
             if(feed == null) {
                 post.visibility = View.GONE
@@ -48,13 +47,13 @@ class FeedAdapter : PagedListAdapter<Feed,FeedAdapter.ViewHolder>(FeedDiffCallBa
 
         }
 
-        private fun showFeedData(feed: Feed) {
+        private fun showFeedData(feed: feed) {
             username.text = feed.username
             userPic.setImageURI(null)
             userPic.visibility = View.GONE
             location.text = feed.location
-            time.text = feed.timeStamp
-            post.setImageURI(Uri.parse(feed.m_url))
+            time.text = feed.timeStamp.toString()
+            post.setImageURI(Uri.parse(feed.mUrl))
 
         }
 
@@ -62,12 +61,12 @@ class FeedAdapter : PagedListAdapter<Feed,FeedAdapter.ViewHolder>(FeedDiffCallBa
 
 }
 
-class FeedDiffCallBack : DiffUtil.ItemCallback<Feed>() {
-    override fun areItemsTheSame(oldItem: Feed?, newItem: Feed?): Boolean {
+class FeedDiffCallBack : DiffUtil.ItemCallback<feed>() {
+    override fun areItemsTheSame(oldItem:feed, newItem: feed): Boolean {
         return oldItem?.id == newItem?.id
     }
 
-    override fun areContentsTheSame(oldItem: Feed?, newItem: Feed?): Boolean {
+    override fun areContentsTheSame(oldItem: feed, newItem: feed): Boolean {
         return oldItem == newItem
     }
 

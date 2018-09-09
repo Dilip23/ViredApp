@@ -1,19 +1,34 @@
-package com.example.viredapp.model;
+package com.example.viredapp.model; ;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Feed {
 
-    private int id;
+    @SerializedName("id")
+    @Expose
+    private Integer id;
+    @SerializedName("username")
+    @Expose
     private String username;
-    private String m_url;
+    @SerializedName("m_url")
+    @Expose
+    private String mUrl;
+    @SerializedName("timeStamp")
+    @Expose
     private String timeStamp;
+    @SerializedName("location")
+    @Expose
     private String location;
-    private String likes_count;
+    @SerializedName("likes_count")
+    @Expose
+    private Integer likesCount;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -25,12 +40,12 @@ public class Feed {
         this.username = username;
     }
 
-    public String getM_url() {
-        return m_url;
+    public String getMUrl() {
+        return mUrl;
     }
 
-    public void setM_url(String m_url) {
-        this.m_url = m_url;
+    public void setMUrl(String mUrl) {
+        this.mUrl = mUrl;
     }
 
     public String getTimeStamp() {
@@ -49,11 +64,12 @@ public class Feed {
         this.location = location;
     }
 
-    public String getLikes_count() {
-        return likes_count;
+    public Integer getLikesCount() {
+        return likesCount;
     }
 
-    public void setLikes_count(String likes_count) {
-        this.likes_count = likes_count;
+    public void setLikesCount(Integer likesCount) {
+        this.likesCount = likesCount;
     }
+
 }

@@ -1,24 +1,14 @@
 package com.example.viredapp.ui
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.widget.Button
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.navigateUp
 import com.example.viredapp.R
-import com.example.viredapp.model.Feed
-import com.example.viredapp.model.FeedViewModel
-import com.example.viredapp.utilities.ApiClient
-import com.example.viredapp.utilities.UserClient
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.android.synthetic.main.activity_feed.*
 
 class FeedActivity : AppCompatActivity() {
     private var bottomLayout:BottomNavigationViewEx? = null
@@ -48,6 +38,7 @@ class FeedActivity : AppCompatActivity() {
         }
 
     }
+
 
 
 

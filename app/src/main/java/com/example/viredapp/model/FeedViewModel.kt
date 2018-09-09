@@ -8,9 +8,5 @@ import com.example.viredapp.services.FeedRepository
 
 class FeedViewModel internal constructor(private val feedRepository: FeedRepository):ViewModel() {
 
-    // TODO: Implement the ViewModel
-
-
-
     fun showFeed():LiveData<PagedList<feed>> = feedRepository.showFeed()
 }
