@@ -6,6 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.FeedActivity">
+    <LinearLayout
+        android:id="@+id/holderLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +35,7 @@
         tools:ignore="MissingConstraints" />
 
     </RelativeLayout>
-
+</LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -41,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
+
         app:menu="@menu/navigation" />
 
     </RelativeLayout>

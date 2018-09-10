@@ -3,6 +3,7 @@ package com.example.viredapp.ui
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.arch.paging.PagedList
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -32,17 +33,18 @@ class FeedFragment : Fragment() {
     ): View? {
         val view =  inflater.inflate(R.layout.feed_fragment, container, false)
         val context = getContext() ?: return view
-
-        val factory = InjectorUtils.provideViewModelFactory(context)
-        viewModel = ViewModelProviders.of(this,factory).get(FeedViewModel::class.java)
-        val adapter = FeedAdapter()
+        val adapter = FeedAdapter(context)
         view.findViewById<RecyclerView>(R.id.feedView).adapter = adapter
         view.findViewById<RecyclerView>(R.id.feedView).layoutManager = LinearLayoutManager(MyApplication.getContext())
-        subscribeUI(adapter)
+        subscribeUI(adapter,context)
+
+
         return view
     }
 
-    private fun subscribeUI(adapter: FeedAdapter) {
+    private fun subscribeUI(adapter: FeedAdapter,context:Context) {
+        val factory = InjectorUtils.provideViewModelFactory(context)
+        viewModel = ViewModelProviders.of(this,factory).get(FeedViewModel::class.java)
         viewModel.showFeed().observe(this, object:Observer<PagedList<feed>>{
             override fun onChanged(t: PagedList<feed>?) {
                 adapter.submitList(t)

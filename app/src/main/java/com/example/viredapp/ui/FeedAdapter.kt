@@ -2,6 +2,7 @@ package com.example.viredapp.ui
 
 
 import android.arch.paging.PagedListAdapter
+import android.content.Context
 import android.net.Uri
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
@@ -12,14 +13,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.viredapp.R
 import com.example.viredapp.db.feed
+import kotlinx.android.synthetic.main.feed_fragment.view.*
 
-class FeedAdapter : PagedListAdapter<feed,FeedAdapter.ViewHolder>(FeedDiffCallBack()){
+import kotlinx.android.synthetic.main.feedrow.view.*
+
+class FeedAdapter(val context:Context) : PagedListAdapter<feed,FeedAdapter.ViewHolder>(FeedDiffCallBack()){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-                LayoutInflater.from(parent.context)
+            val userPost = LayoutInflater.from(parent.context)
                         .inflate(R.layout.feedrow,parent,false)
-        )
+            return ViewHolder(userPost)
     }
+
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val feedItem = getItem(position)
@@ -30,20 +35,16 @@ class FeedAdapter : PagedListAdapter<feed,FeedAdapter.ViewHolder>(FeedDiffCallBa
 
     class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
         //Retrieve data
-        private val username:TextView = itemView.findViewById(R.id.username_txt)
-        private val userPic:ImageView = itemView.findViewById(R.id.feedImage)
-        private val location:TextView = itemView.findViewById(R.id.postLocation)
-        private val time:TextView = itemView.findViewById(R.id.postTime)
-        private val post:ImageView = itemView.findViewById(R.id.postImage)
+        private val username:TextView = itemView.post_name
+
+        private val userPic:ImageView = itemView.profileImage
+        private val location:TextView = itemView.postLocation
+        private val time:TextView = itemView.postTime
+        private val post:ImageView = itemView.postImage
 
         fun bind(feed: feed) = with(itemView){
             //TODO:Bind Data with View
-            if(feed == null) {
-                post.visibility = View.GONE
-            }
-            else{
                 showFeedData(feed)
-            }
 
         }
 
