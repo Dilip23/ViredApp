@@ -12,6 +12,7 @@ This app built using Model-View-ViewModel(MVVM) Design Pattern and also follows 
 Tehcnologies:
 
 Frontend:
+
     1.Android Jetpack
 
         a.Room
