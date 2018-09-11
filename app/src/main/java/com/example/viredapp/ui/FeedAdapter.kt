@@ -13,27 +13,26 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.viredapp.R
 import com.example.viredapp.db.feed
-import kotlinx.android.synthetic.main.feed_fragment.view.*
 
 import kotlinx.android.synthetic.main.feedrow.view.*
 
-class FeedAdapter(val context:Context) : PagedListAdapter<feed,FeedAdapter.ViewHolder>(FeedDiffCallBack()){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+class FeedAdapter(val context:Context) : PagedListAdapter<feed,FeedAdapter.MyViewHolder>(FeedDiffCallBack()){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
             val userPost = LayoutInflater.from(parent.context)
                         .inflate(R.layout.feedrow,parent,false)
-            return ViewHolder(userPost)
+            return MyViewHolder(userPost)
     }
 
 
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val feedItem = getItem(position)
+    override fun onBindViewHolder(holderMy: MyViewHolder, position: Int) {
+        val feedItem = getItem(holderMy.adapterPosition)
         if(feedItem != null){
-            holder.bind(feedItem)
+            holderMy.bind(feedItem)
         }
     }
 
-    class ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
         //Retrieve data
         private val username:TextView = itemView.post_name
 
@@ -43,7 +42,7 @@ class FeedAdapter(val context:Context) : PagedListAdapter<feed,FeedAdapter.ViewH
         private val post:ImageView = itemView.postImage
 
         fun bind(feed: feed) = with(itemView){
-            //TODO:Bind Data with View
+            //TODO:Use Glide to show Images
                 showFeedData(feed)
 
         }
