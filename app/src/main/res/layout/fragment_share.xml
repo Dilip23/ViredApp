@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ShareFragment">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="@dimen/margin_horizontal"
+            android:layout_marginBottom="@dimen/margin_horizontal"
+            android:layout_marginLeft="@dimen/margin_horizontal"
+            android:layout_marginRight="@dimen/margin_horizontal"
+            />
+
+        <EditText
+            android:hint="@string/location_hint"
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="@dimen/margin_horizontal"
+            android:layout_marginRight="@dimen/margin_horizontal"
+            android:layout_marginLeft="@dimen/margin_horizontal"
+            />
+        <Button
+            android:id="@+id/share"
+            style="@style/SolidButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginBottom="@dimen/margin_horizontal"
+            android:layout_marginRight="@dimen/margin_horizontal"
+            android:text="@string/share"
+            android:visibility="invisible"
+            android:layout_marginLeft="@dimen/margin_horizontal" />
+
+        <Button
+            android:id="@+id/takePicture"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="@dimen/margin_horizontal"
+            android:text="@string/take_picture"
+            style="@style/StrokeButtonStyle"
+            android:layout_marginLeft="@dimen/margin_horizontal"/>
+    </LinearLayout>
+
+
+
+</FrameLayout>

@@ -11,10 +11,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="dimen_8">8dp</dimen>
-
 
     <!-- Default screen margins, per the Android Design guidelines. -->
 
@@ -30,6 +28,16 @@
     <dimen name="feed_item_corner_radius">3dp</dimen>
     <dimen name="feed_item_border_width">1dp</dimen>
     <dimen name="feed_item_height">250dp</dimen>
+    <!-- Image Filter Dimensions-->
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="thumbnail_size">80dp</dimen>
+    <dimen name="recycler_size">100dp</dimen>
+    <dimen name="thumbnail_horizontal_padding">8dp</dimen>
+    <dimen name="thumbnail_vertical_padding">10dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="margin_horizontal">16dp</dimen>
+    <dimen name="lbl_edit_image_control">100dp</dimen>
+
 
 </resources>
 

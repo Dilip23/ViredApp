@@ -9,9 +9,8 @@
         android:layout_margin="10dp"
         android:elevation="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <!--android:background="@drawable/bg_parent_rounded_corner"-->
-
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_parent_rounded_corner">
         <!--TODO:Change to Circle Image View-->
         <ImageView
             android:id="@+id/profileImage"
@@ -62,8 +61,8 @@
             android:layout_height="200dp"
             android:layout_width="match_parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:layout_marginTop="54dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="60dp"
            />
 
     </RelativeLayout>

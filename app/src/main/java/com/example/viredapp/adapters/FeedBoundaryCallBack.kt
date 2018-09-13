@@ -1,4 +1,4 @@
-package com.example.viredapp.ui
+package com.example.viredapp.adapters
 
 import android.arch.paging.PagedList
 import com.example.viredapp.database.AppDatabase

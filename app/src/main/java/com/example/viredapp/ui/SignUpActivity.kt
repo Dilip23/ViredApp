@@ -172,7 +172,6 @@ class SignUpActivity  : AppCompatActivity(){
             }catch (e:IOException){
                 Log.d(LOG_TAG,e.printStackTrace().toString())
             }
-
             if(photoFile !=null) {
                 var photoUri:Uri = FileProvider.getUriForFile(this,"com.example.android.fileprovider",photoFile)
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,photoUri)

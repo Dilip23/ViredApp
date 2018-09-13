@@ -1,5 +1,6 @@
 package com.example.viredapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
@@ -7,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.viredapp.R
+import com.example.viredapp.utilities.MyApplication
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import kotlinx.android.synthetic.main.activity_feed.*
 
@@ -23,7 +25,7 @@ class FeedActivity : AppCompatActivity() {
         //Set BottomNavigation View
         setUpBottomNavMenu(navController)
         
-        val bnve:BottomNavigationViewEx = findViewById(R.id.bottom_nav)
+        val bnve:BottomNavigationViewEx = this.findViewById(R.id.bottom_nav)
         bnve.enableAnimation(false);
         bnve.enableShiftingMode(false);
         bnve.enableItemShiftingMode(false);
@@ -32,14 +34,12 @@ class FeedActivity : AppCompatActivity() {
 
     }
 
+
+
     private fun setUpBottomNavMenu(navController: NavController) {
         findViewById<BottomNavigationViewEx>(R.id.bottom_nav)?.let { navigationView ->
             NavigationUI.setupWithNavController(navigationView,navController)
         }
 
     }
-
-
-
-
 }

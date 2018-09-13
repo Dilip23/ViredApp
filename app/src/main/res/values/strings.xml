@@ -40,6 +40,25 @@
     <string name="preview_description">Preview will appear here</string>
     <string name="btn_take_picture">Take Picture</string>
     <string name="btn_record_video">Record Video</string>
+    <!-- Image Filters-->
+    <string name="activity_title_main">Filters</string>
+    <string name="filters">FILTERS</string>
+    <string name="edit">EDIT</string>
+
+    <string name="lbl_brightness">BRIGHTNESS</string>
+    <string name="lbl_contrast">CONTRAST</string>
+    <string name="lbl_saturation">SATURATION</string>
+    <string name="tab_filters">FILTERS</string>
+    <string name="tab_edit">EDIT</string>
+
+
+    <string name="roboto_medium">sans-serif-medium</string>
+    <string name="filter_normal">Normal</string>
+    <string name="action_save">SAVE</string>
+    <string name="action_open">OPEN</string>
+    <string name="title_activity_image_filter">ImageFilterActivity</string>
+    <string name="share">share</string>
+    <string name="take_picture">Take Picture</string>
 
 
 </resources>

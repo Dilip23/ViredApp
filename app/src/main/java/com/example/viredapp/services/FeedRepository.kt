@@ -3,21 +3,17 @@ package com.example.viredapp.services
 import android.arch.lifecycle.LiveData
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
-import android.os.HandlerThread
 import com.example.viredapp.db.FeedDao
 import com.example.viredapp.db.feed
 import com.example.viredapp.model.Feed
 import com.example.viredapp.model.FeedResult
-import com.example.viredapp.ui.FeedBoundaryCallBack
+import com.example.viredapp.adapters.FeedBoundaryCallBack
 import com.example.viredapp.utilities.ApiClient
-import com.example.viredapp.utilities.DateConverter
 import com.example.viredapp.utilities.UserClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
-import java.sql.Date
-import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 
@@ -114,12 +110,5 @@ class FeedRepository (
 
     //TODO:Post User feed
 
-    //{/feed/{id}}
-    //TODO:Update user post
-    //fun updatePost()
-
-
-    //TODO:Delete user post
-    //DeletePost
 
 }

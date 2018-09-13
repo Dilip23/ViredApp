@@ -13,10 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.viredapp.model.FeedViewModel
 import com.example.viredapp.R
+import com.example.viredapp.adapters.FeedAdapter
 import com.example.viredapp.db.feed
 import com.example.viredapp.utilities.InjectorUtils
 import com.example.viredapp.utilities.MyApplication
-import kotlinx.android.synthetic.main.feed_fragment.*
 
 
 class FeedFragment : Fragment() {
@@ -42,7 +42,7 @@ class FeedFragment : Fragment() {
         return view
     }
 
-    private fun subscribeUI(adapter: FeedAdapter,context:Context) {
+    private fun subscribeUI(adapter: FeedAdapter, context:Context) {
         val factory = InjectorUtils.provideViewModelFactory(context)
         viewModel = ViewModelProviders.of(this,factory).get(FeedViewModel::class.java)
         viewModel.showFeed().observe(this, object:Observer<PagedList<feed>>{

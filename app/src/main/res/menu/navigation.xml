@@ -16,7 +16,7 @@
         android:title="Friends" />
 
     <item
-        android:id="@+id/camera"
+        android:id="@+id/shareFragment"
         app:showAsAction="always"
         android:title=""
         android:icon="@drawable/ic_baseline_camera_24px" />

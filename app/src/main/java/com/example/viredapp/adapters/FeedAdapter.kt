@@ -1,9 +1,8 @@
-package com.example.viredapp.ui
+package com.example.viredapp.adapters
 
 
 import android.arch.paging.PagedListAdapter
 import android.content.Context
-import android.net.Uri
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -11,12 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.viredapp.R
 import com.example.viredapp.db.feed
 
 import kotlinx.android.synthetic.main.feedrow.view.*
 
-class FeedAdapter(val context:Context) : PagedListAdapter<feed,FeedAdapter.MyViewHolder>(FeedDiffCallBack()){
+class FeedAdapter(val context:Context) : PagedListAdapter<feed, FeedAdapter.MyViewHolder>(FeedDiffCallBack()){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
             val userPost = LayoutInflater.from(parent.context)
                         .inflate(R.layout.feedrow,parent,false)
@@ -53,7 +53,12 @@ class FeedAdapter(val context:Context) : PagedListAdapter<feed,FeedAdapter.MyVie
             userPic.visibility = View.GONE
             location.text = feed.location
             time.text = feed.timeStamp.toString()
-            post.setImageURI(Uri.parse(feed.mUrl))
+
+            //Loading Feed post Image
+            Glide
+                    .with(post)
+                    .load(feed.mUrl)
+                    .into(post.postImage)
 
         }
 

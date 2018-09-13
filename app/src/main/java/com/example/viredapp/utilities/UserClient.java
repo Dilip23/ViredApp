@@ -49,8 +49,8 @@ public interface UserClient {
                              @Query("offset") Integer offset);
 
     //Download Media
-    @GET()
-    Call<ResponseBody> getMedia(@Url String url);
+//    @GET()
+//    Call<ResponseBody> getMedia(@Url String url);
 
     //TODO:Add Friends
 

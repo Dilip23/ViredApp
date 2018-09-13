@@ -12,7 +12,9 @@
     <color name="divider">#f5f5f5</color>
     <color name="your_color">#fa4c26</color>
 
-
+    <color name="color_option_menu">#FF3990</color>
+    <color name="filter_label_normal">#8A8889</color>
+    <color name="filter_label_selected">#221F20</color>
 
     <!--feed view colors -->
     <color name="white">#ffffff</color>

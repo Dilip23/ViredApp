@@ -26,5 +26,10 @@
         android:name="com.example.viredapp.ui.UsersFragment"
         android:label="users_fragment"
         tools:layout="@layout/users_fragment" />
+    <fragment
+        android:id="@+id/shareFragment"
+        android:name="com.example.viredapp.ui.ShareFragment"
+        android:label="fragment_share"
+        tools:layout="@layout/fragment_share" />
 
 </navigation>
