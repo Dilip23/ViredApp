@@ -186,6 +186,7 @@ class SignUpActivity  : AppCompatActivity(){
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK && data!=null && data.data!=null){
             bitmap = data.extras?.get("data") as Bitmap
             toast(bitmap.toString())
+            addPicGallery()
         }
         else if(requestCode == REQUEST_GALLERY_IMAGE && resultCode == Activity.RESULT_OK && data != null)
         {

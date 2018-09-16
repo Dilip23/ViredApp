@@ -15,6 +15,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
@@ -40,8 +41,10 @@ public interface UserClient {
     Call<LoggedInUser> getUserData(@Query("search") String username);
 
     //TODO:Post feed Items
+    @Multipart
     @POST("feed/")
-    Call<ResponseBody> postFeedItem(@Body PostFeed postFeed);
+    Call<ResponseBody> postFeedItem(@Part("location") RequestBody location,
+                                    @Part MultipartBody.Part m_url);
 
     //TODO:Show User feed ,;Use @Url to download Media Files for feed
     @GET("/feed/")

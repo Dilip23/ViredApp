@@ -90,8 +90,7 @@ dependencies {
     //Recycler View
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 
-    //Image Filters
-    implementation 'info.androidhive:imagefilters:1.0.7'
+
     //Dexter M Permissions
     implementation 'com.karumi:dexter:4.1.0'
 
