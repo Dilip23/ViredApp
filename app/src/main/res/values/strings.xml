@@ -59,6 +59,7 @@
     <string name="title_activity_image_filter">ImageFilterActivity</string>
     <string name="share">share</string>
     <string name="take_picture">Take Picture</string>
+    <string name="search_name">Search User</string>
 
 
 </resources>

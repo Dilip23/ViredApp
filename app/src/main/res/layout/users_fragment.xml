@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.UsersFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Users" />
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/usersRecycler"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:listitem="@layout/user_row">
+  </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

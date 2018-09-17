@@ -23,7 +23,13 @@
         <activity android:name=".ui.MainActivity" />
         <activity
             android:name=".ui.FeedActivity"
-            android:label="@string/title_activity_feed" />
+            android:label="@string/title_activity_feed" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
         <activity android:name=".ui.SignUpActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>

@@ -1,10 +1,9 @@
 package com.example.viredapp.utilities;
 
 import com.example.viredapp.model.FeedResult;
-import com.example.viredapp.model.LoggedInUser;
 import com.example.viredapp.model.Login;
-import com.example.viredapp.model.PostFeed;
 import com.example.viredapp.model.User;
+import com.example.viredapp.model.UserSearchResult;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -15,16 +14,13 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
-import retrofit2.http.Url;
 
 public interface UserClient {
 
     //Login Call
     @POST("login/")
     Call<User> login(@Body Login login);
-
 
     //Signup Call
     @Multipart
@@ -38,7 +34,7 @@ public interface UserClient {
 
     //Retrieve User Data after first-time Login by searching
     @GET("profile/")
-    Call<LoggedInUser> getUserData(@Query("search") String username);
+    Call<UserSearchResult> getUserData(@Query("search") String username);
 
     //TODO:Post feed Items
     @Multipart
@@ -46,7 +42,6 @@ public interface UserClient {
     Call<ResponseBody> postFeedItem(@Part("location") RequestBody location,
                                     @Part MultipartBody.Part m_url);
 
-    //TODO:Show User feed ,;Use @Url to download Media Files for feed
     @GET("/feed/")
     Call<FeedResult> getFeed(@Query("limit") Integer limit,
                              @Query("offset") Integer offset);
