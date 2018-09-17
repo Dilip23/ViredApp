@@ -16,19 +16,20 @@ class FeedBoundaryCallBack(private val id:Int):PagedList.BoundaryCallback<feed>(
         private val feedRepository = FeedRepository.getInstance(AppDatabase.getInstance(MyApplication.getContext()).feedDao())
     }
 
+    //We only append to data which is already in DB
     override fun onItemAtFrontLoaded(itemAtFront: feed) {
-        Timber.d("onItemAtFrontLoaded()")
-        feedRepository.getFeedResponse()
+        Timber.i("onItemAtFrontLoaded()")
     }
 
     override fun onZeroItemsLoaded() {
         Timber.i("onZeroItemsLoaded()")
-        feedRepository.getFeedResponse()
+        apiClient.getFeed(NETWORK_PAGE_SIZE,0)
     }
 
     override fun onItemAtEndLoaded(itemAtEnd:feed) {
         Timber.i("onItemAtEndLoaded()")
-        feedRepository.getFeedResponse()
+        var offset:Int = itemAtEnd.id.toInt()
+        apiClient.getFeed(NETWORK_PAGE_SIZE,offset)
     }
 
 

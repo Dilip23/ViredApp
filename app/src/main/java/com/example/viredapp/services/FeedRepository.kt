@@ -16,7 +16,6 @@ import retrofit2.Response
 import timber.log.Timber
 import java.util.concurrent.Executors
 
-
 class FeedRepository (
         private val feedDao: FeedDao
 ){
@@ -57,7 +56,8 @@ class FeedRepository (
         Timber.i("getFeedResponse()")
         if(isRequestInProgress) return
         isRequestInProgress = true
-        val call: Call<FeedResult> = apiClient.getFeed(DEFAULT_NETWORK_PAGE_SIZE,lastRequestedItem)
+        var lastResult = 0
+        val call: Call<FeedResult> = apiClient.getFeed(DEFAULT_NETWORK_PAGE_SIZE,lastResult)
         call.enqueue(object :Callback<FeedResult>{
             override fun onFailure(call: Call<FeedResult>?, t: Throwable?) {
                 Timber.d(t.toString())
