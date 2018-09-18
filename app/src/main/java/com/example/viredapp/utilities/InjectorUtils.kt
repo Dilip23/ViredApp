@@ -5,6 +5,7 @@ import android.content.Context
 import com.example.viredapp.database.AppDatabase
 import com.example.viredapp.model.FeedViewModelFactory
 import com.example.viredapp.services.FeedRepository
+import com.example.viredapp.services.UserRepository
 
 object InjectorUtils{
 
@@ -16,4 +17,5 @@ object InjectorUtils{
     fun provideViewModelFactory(context: Context):ViewModelProvider.Factory{
         return FeedViewModelFactory(getFeedRepository(context))
     }
+
 }

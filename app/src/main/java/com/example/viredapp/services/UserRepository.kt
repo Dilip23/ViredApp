@@ -15,13 +15,6 @@ class UserRepository {
 
     private var lastePage = 1
 
-
-
-
-
-
-
-
     /*
     * Network Request to retrieve items
     * */

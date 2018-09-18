@@ -13,7 +13,6 @@ class FeedBoundaryCallBack(private val id:Int):PagedList.BoundaryCallback<feed>(
     companion object {
         private const val NETWORK_PAGE_SIZE = 50
         private val apiClient = ApiClient.getApiClient().create(UserClient::class.java)
-        private val feedRepository = FeedRepository.getInstance(AppDatabase.getInstance(MyApplication.getContext()).feedDao())
     }
 
     //We only append to data which is already in DB
