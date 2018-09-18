@@ -16,6 +16,8 @@ import retrofit2.Response
 import timber.log.Timber
 import java.util.concurrent.Executors
 
+//TODO:Download Media and Save it in Local Storage
+
 class FeedRepository (
         private val feedDao: FeedDao
 ){
@@ -103,12 +105,8 @@ class FeedRepository (
         return r
     }
 
-    //public fun loadFromDB():LiveData<PagedList<feed>> =  feedDao.getAllFeed()
 
 
-    //TODO:Download Media and Save it in Local Storage
-
-    //TODO:Post User feed
 
 
 }

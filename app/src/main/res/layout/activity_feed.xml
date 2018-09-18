@@ -5,6 +5,7 @@
     android:id="@+id/feedActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
     tools:context=".ui.FeedActivity">
     <LinearLayout
         android:id="@+id/holderLayout"
@@ -12,18 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:id="@+id/relLay1">
-        <include layout="@layout/layout_top_tabs"/>
-    </RelativeLayout>
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?actionBarSize"-->
+        <!--android:id="@+id/relLay1">-->
+        <!--&lt;!&ndash;<include layout="@layout/layout_top_tabs"/>&ndash;&gt;-->
+    <!--</RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@id/relLay1"
-        android:layout_below="@id/relLay1">
+        android:layout_alignBottom="@id/feedActivity"
+        android:layout_below="@id/feedActivity">
         <!-- Middle Fragment -->
     <fragment
         android:id="@+id/feed_activity_host_nav_fragment"

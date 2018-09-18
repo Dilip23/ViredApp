@@ -34,7 +34,8 @@ public interface UserClient {
 
     //Retrieve User Data after first-time Login by searching
     @GET("profile/")
-    Call<UserSearchResult> getUserData(@Query("search") String username);
+    Call<UserSearchResult> getUserData(@Query("page")Integer page,
+                                       @Query("search") String username);
 
     //TODO:Post feed Items
     @Multipart

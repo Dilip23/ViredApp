@@ -28,6 +28,8 @@ class UsersFragment : Fragment() {
     }
 
     private lateinit var viewModel: UsersViewModel
+    private var searchView:SearchView? = null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -43,5 +45,35 @@ class UsersFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.options_menu,menu)
+        var searchItem:MenuItem = menu!!.findItem(R.id.search)
+        var searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        searchView = SearchView((context as FeedActivity).supportActionBar?.themedContext ?: context)
+        searchItem.apply {
+            setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            actionView = searchView
+        }
+
+//        searchView = searchItem.actionView as SearchView
+        if(searchView != null){
+
+            searchView!!.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    Timber.d(query)
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    Timber.d(newText)
+                }
+            })
+
+        }
+
     }
 }
