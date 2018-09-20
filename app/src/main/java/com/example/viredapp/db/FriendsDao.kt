@@ -9,10 +9,15 @@ public interface FriendsDao {
 
     //Show Friends List
     @Query("SELECT * FROM FRIENDS")
+    fun showFriends()
 
     //Show Friendship Profile
 
+
+/*
+* TODO: Still left to implement
+* */
     //Delete Friendship
-    @Delete
-    fun deleteFriendship(friends: Friends)
+//    @Delete
+//    fun deleteFriendship(friends: Friends)
 }

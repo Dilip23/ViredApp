@@ -1,31 +1,36 @@
 package com.example.viredapp.model
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Transformations.map
+import android.arch.lifecycle.Transformations.switchMap
 import android.arch.lifecycle.ViewModel;
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PageKeyedDataSource
 import android.arch.paging.PagedList
+import android.os.AsyncTask
 import com.example.viredapp.adapters.UserDataSource
 import com.example.viredapp.adapters.UserDataSourceFactory
+import com.example.viredapp.services.UserRepository
+import java.util.concurrent.Executors
 
-class UsersViewModel(param:String) : ViewModel() {
-    var resultPagedList:LiveData<PagedList<Result>>
-    var liveDataSource:LiveData<PageKeyedDataSource<Int,Result>>
-    private var query:String
-
-    init {
-        query = param
-        val userDataSourceFactory = UserDataSourceFactory(query)
-        liveDataSource  = userDataSourceFactory.getResultLiveDataSource()
-
-        val pagedListConfig : PagedList.Config =
-                PagedList.Config.Builder()
-                        .setEnablePlaceholders(false)
-                        .setPageSize(UserDataSource.page)
-                        .build()
-        resultPagedList = LivePagedListBuilder(userDataSourceFactory,pagedListConfig).build()
+class UsersViewModel internal constructor(private val repository: UserRepository): ViewModel() {
+    private val searchQuery = MutableLiveData<String>()
+    private val userResult = map(searchQuery) {
+        repository.showUsers(it)
+    }
+    val items = switchMap(userResult) { it.value as LiveData<PagedList<Result>> }
+    fun showSearchResults(searchQuery: String): Boolean {
+        if (this.searchQuery.value == searchQuery) {
+            return false
+        }
+        this.searchQuery.value = searchQuery
+        return true
     }
 
-    fun invalidateData(query:String) = UserDataSource(query).invalidate()
 
+    fun showResult(searchQuery: String): LiveData<PagedList<Result>> {
+                return repository.showUsers(searchQuery)
+    }
 }

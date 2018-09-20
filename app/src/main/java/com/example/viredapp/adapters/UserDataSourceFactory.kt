@@ -7,7 +7,7 @@ import com.example.viredapp.model.Result
 
 public class UserDataSourceFactory(param:String) : DataSource.Factory<Int, Result>() {
     private var query:String
-    private var resultLiveDataSource: MutableLiveData<PageKeyedDataSource<Int,Result>> = MutableLiveData()
+    private val resultLiveDataSource: MutableLiveData<PageKeyedDataSource<Int,Result>> = MutableLiveData()
 
     init {
         query  = param
@@ -16,7 +16,6 @@ public class UserDataSourceFactory(param:String) : DataSource.Factory<Int, Resul
     override fun create(): DataSource<Int, Result> {
         var userDataSource:UserDataSource = UserDataSource(query)
         resultLiveDataSource.postValue(userDataSource)
-
         return userDataSource
     }
 

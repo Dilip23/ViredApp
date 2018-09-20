@@ -55,6 +55,7 @@ public interface UserClient {
 
     //TODO:Show friends list
 
+
     //TODO:Send Requests
 
     //TODO:Show Requests

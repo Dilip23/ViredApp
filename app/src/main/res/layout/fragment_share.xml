@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="300dp"
             android:layout_marginTop="@dimen/margin_horizontal"
             android:layout_marginBottom="@dimen/margin_horizontal"
             android:layout_marginLeft="@dimen/margin_horizontal"
@@ -34,19 +34,21 @@
             android:id="@+id/share"
             style="@style/SolidButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_horizontal"
             android:layout_marginRight="@dimen/margin_horizontal"
             android:text="@string/share"
+            android:elevation="3dp"
             android:visibility="invisible"
             android:layout_marginLeft="@dimen/margin_horizontal" />
 
         <Button
             android:id="@+id/takePicture"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:layout_marginRight="@dimen/margin_horizontal"
+            android:elevation="2dp"
             android:text="@string/take_picture"
             style="@style/StrokeButtonStyle"
             android:layout_marginLeft="@dimen/margin_horizontal"/>

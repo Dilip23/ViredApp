@@ -4,7 +4,9 @@ class FriendsRepository private constructor(){
 
     //{friends/}
     //Get all Friends
-    //fun getAllFriends()
+    fun getAllFriends(){
+
+    }
 
 
 }

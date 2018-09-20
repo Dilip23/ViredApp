@@ -42,7 +42,6 @@ class FeedAdapter(val context:Context) : PagedListAdapter<feed, FeedAdapter.MyVi
         private val post:ImageView = itemView.postImage
 
         fun bind(feed: feed) = with(itemView){
-            //TODO:Use Glide to show Images
                 showFeedData(feed)
 
         }
