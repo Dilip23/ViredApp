@@ -26,6 +26,7 @@ class UserDataSource(private var param:String):PageKeyedDataSource<Int,Result>()
     }
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Result>) {
+        Timber.d(query+"loadInitial()")
         val call: Call<UserSearchResult> = apiClient.getUserData(page, query)
             call.enqueue(object : Callback<UserSearchResult> {
                 override fun onFailure(call: Call<UserSearchResult>?, t: Throwable?) {

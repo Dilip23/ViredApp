@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.example.viredapp.R;
 import com.example.viredapp.model.Result;
 
+import timber.log.Timber;
+
 public class UserAdapter extends PagedListAdapter<Result,UserAdapter.UserViewHolder>{
 
     private Context ctx;
@@ -40,6 +42,7 @@ public class UserAdapter extends PagedListAdapter<Result,UserAdapter.UserViewHol
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Timber.d("onCreateViewHolder() --> Adapter");
         View view = LayoutInflater.from(ctx).inflate(R.layout.user_row,parent,false);
 
         return new UserViewHolder(view);
@@ -47,7 +50,8 @@ public class UserAdapter extends PagedListAdapter<Result,UserAdapter.UserViewHol
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        Result result = getItem(position);
+        Timber.d("onBindViewHolder() --> Adapter");
+        Result result = super.getItem(position);
         if(result != null){
 
             /**
@@ -72,6 +76,7 @@ public class UserAdapter extends PagedListAdapter<Result,UserAdapter.UserViewHol
         ImageView imageView;
         public UserViewHolder(View itemView) {
             super(itemView);
+            Timber.d("UserViewHOlder");
             textView = itemView.findViewById(R.id.username);
             imageView = itemView.findViewById(R.id.userImage);
         }

@@ -11,7 +11,7 @@ import com.example.viredapp.services.UserRepository
 object InjectorUtils{
 
 
-    private fun getFeedRepository(context: Context):FeedRepository{
+     fun getFeedRepository(context: Context):FeedRepository{
         return FeedRepository.getInstance(AppDatabase.getInstance(context).feedDao())
     }
 

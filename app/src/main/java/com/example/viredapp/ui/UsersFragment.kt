@@ -34,7 +34,7 @@ class UsersFragment : Fragment() {
         fun newInstance() = UsersFragment()
         val userClient = ApiClient.getApiClient().create(UserClient::class.java)
     }
-
+    private lateinit var adapter:UserAdapter
     private lateinit var viewModel: UsersViewModel
     private var searchView:SearchView? = null
     private lateinit var rec_view:RecyclerView
@@ -49,15 +49,20 @@ class UsersFragment : Fragment() {
         rec_view.layoutManager = LinearLayoutManager(MyApplication.getContext())
         viewModel = viewModel()
         initAdapter()
+
         return  view
     }
 
     private fun initAdapter() {
-        val adapter = UserAdapter(context)
+        adapter = UserAdapter(context)
         rec_view.adapter = adapter
-        viewModel.items.observe(this,Observer<PagedList<Result>>{
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
+        viewModel.items.observe(this,object:Observer<PagedList<Result>>{
+            override fun onChanged(t: PagedList<Result>?) {
+                adapter.submitList(t)
+                adapter.notifyDataSetChanged()
+            }
+
+
         })
     }
 
@@ -91,7 +96,13 @@ class UsersFragment : Fragment() {
 
             searchView!!.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String): Boolean {
-                    searchNetwork(query)
+                    viewModel.items.observe(this@UsersFragment,object :Observer<PagedList<Result>>{
+                        override fun onChanged(t: PagedList<Result>?) {
+                            adapter.submitList(t)
+                            adapter.notifyDataSetChanged()
+                            Timber.d("ViewModel Observed inside OnQueryTextSubmit()")
+                        }
+                    })
                     Timber.d(query)
                     return true
                 }
@@ -107,15 +118,5 @@ class UsersFragment : Fragment() {
         }
 
     }
-    private fun searchNetwork(searchQuery:String){
-            searchQuery.trim().let {
-            if (it.isNotEmpty()){
-                executor.execute {
-                    viewModel.showResult(searchQuery)
-                }
-                rec_view.adapter.notifyDataSetChanged()
-            }
-        }
 
-    }
 }
