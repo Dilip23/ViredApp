@@ -2,8 +2,11 @@ package com.example.viredapp.utilities;
 
 import com.example.viredapp.model.FeedResult;
 import com.example.viredapp.model.Login;
+import com.example.viredapp.model.Result;
 import com.example.viredapp.model.User;
 import com.example.viredapp.model.UserSearchResult;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -34,8 +37,7 @@ public interface UserClient {
 
     //Retrieve User Data after first-time Login by searching
     @GET("profile/")
-    Call<UserSearchResult> getUserData(@Query("page")Integer page,
-                                       @Query("search") String username);
+    Call<List<Result>> getUserData(@Query("search") String username);
 
     //TODO:Post feed Items
     @Multipart

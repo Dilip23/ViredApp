@@ -8,11 +8,13 @@ import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.MenuCompat.setShowAsAction
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.*
-import android.widget.SearchView
+import android.widget.ListView
 
 import com.example.viredapp.R
 import com.example.viredapp.adapters.UserAdapter
@@ -34,37 +36,22 @@ class UsersFragment : Fragment() {
         fun newInstance() = UsersFragment()
         val userClient = ApiClient.getApiClient().create(UserClient::class.java)
     }
-    private lateinit var adapter:UserAdapter
     private lateinit var viewModel: UsersViewModel
-    private var searchView:SearchView? = null
-    private lateinit var rec_view:RecyclerView
+    private var searchView: SearchView? = null
+    private lateinit var listView: ListView
     val executor = Executors.newSingleThreadExecutor()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view =  inflater.inflate(R.layout.users_fragment, container, false)
         val context = getContext() ?: return view
-        val adapter = UserAdapter(context)
-        rec_view = view.findViewById<RecyclerView>(R.id.usersRecycler)
-        rec_view.layoutManager = LinearLayoutManager(MyApplication.getContext())
-        viewModel = viewModel()
-        initAdapter()
+        listView = view.findViewById(R.id.listView)
+        //viewModel = viewModel()
 
         return  view
     }
 
-    private fun initAdapter() {
-        adapter = UserAdapter(context)
-        rec_view.adapter = adapter
-        viewModel.items.observe(this,object:Observer<PagedList<Result>>{
-            override fun onChanged(t: PagedList<Result>?) {
-                adapter.submitList(t)
-                adapter.notifyDataSetChanged()
-            }
 
-
-        })
-    }
 
     private fun viewModel():UsersViewModel {
         val viewModelFactory = InjectorUtils.provideUserViewModel(context!!)
@@ -82,41 +69,48 @@ class UsersFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.options_menu,menu)
-        var searchItem:MenuItem = menu!!.findItem(R.id.search)
+        inflater?.inflate(R.menu.options_menu, menu)
+        var searchView: SearchView? = menu!!.findItem(R.id.search).actionView as SearchView?
         var searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        searchView = SearchView((context as FeedActivity).supportActionBar?.themedContext ?: context)
+       // searchView = SearchView((context as FeedActivity).supportActionBar?.themedContext
+        //        ?: context)
+        searchView!!.setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+        searchView!!.isSubmitButtonEnabled
+        searchUser(searchView)
+        /*
         searchItem.apply {
             setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            actionView = searchView
         }
-
-//        searchView = searchItem.actionView as SearchView
-        if(searchView != null){
-
-            searchView!!.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    viewModel.items.observe(this@UsersFragment,object :Observer<PagedList<Result>>{
-                        override fun onChanged(t: PagedList<Result>?) {
-                            adapter.submitList(t)
-                            adapter.notifyDataSetChanged()
-                            Timber.d("ViewModel Observed inside OnQueryTextSubmit()")
-                        }
-                    })
-                    Timber.d(query)
-                    return true
-                }
-
-                override fun onQueryTextChange(newText: String): Boolean {
-                    /*
-                    * Do Nothing
-                    * */
-                    return true
-                }
-            })
-
-        }
-
+        searchView = searchItem.actionView as SearchView
+        */
     }
 
+    private fun searchUser(searchView: SearchView?) {
+        searchView!!.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val userClient = ApiClient.getApiClient().create(UserClient::class.java)
+                val call:Call<List<Result>> = userClient.getUserData(query)
+                call.enqueue(object:Callback<List<Result>>{
+                    override fun onFailure(call: Call<List<Result>>?, t: Throwable?) {
+                        Timber.i(t?.message)
+                    }
+
+                    override fun onResponse(call: Call<List<Result>>?, response: Response<List<Result>>?) {
+                        Timber.i(response?.body().toString())
+                        var resultList:List<Result> = response?.body()!!
+                        /*
+                        * Set Data to ListView adapter
+                        * */
+                        val userAdapter = UserAdapter(MyApplication.getContext(),resultList)
+                        listView.adapter = userAdapter
+                    }
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+    }
 }

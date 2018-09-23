@@ -33,6 +33,4 @@ class UsersViewModel internal constructor(private val repository: UserRepository
     fun showResult(searchQuery: String): LiveData<PagedList<Result>> {
                 return repository.showUsers(searchQuery)
     }
-
-
 }
