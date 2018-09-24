@@ -11,12 +11,14 @@ import com.example.viredapp.utilities.DateConverter
                 Friends::class,
                 Profile::class,
                 Request::class,
-                Likes::class],version = 2,
+                Likes::class],version = 6,
         exportSchema = false)
 
 public abstract class AppDatabase: RoomDatabase() {
-    public abstract fun feedDao():FeedDao
-    public abstract fun requestDao():RequestDao
+    abstract fun feedDao():FeedDao
+    abstract fun requestDao():RequestDao
+    abstract fun friendsDao():FriendsDao
+
 
     companion object {
         @Volatile

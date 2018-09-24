@@ -17,7 +17,7 @@ class FeedViewModelFactory(
             return FeedViewModel(repository) as T
         }
         else{
-            throw IllegalArgumentException("Uknown ViewModel Class")
+            throw IllegalArgumentException("Unknown ViewModel Class")
         }
     }
 }

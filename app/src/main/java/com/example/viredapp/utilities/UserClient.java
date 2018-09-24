@@ -1,6 +1,7 @@
 package com.example.viredapp.utilities;
 
 import com.example.viredapp.model.FeedResult;
+import com.example.viredapp.model.FriendsResult;
 import com.example.viredapp.model.Login;
 import com.example.viredapp.model.Result;
 import com.example.viredapp.model.User;
@@ -39,7 +40,6 @@ public interface UserClient {
     @GET("profile/")
     Call<List<Result>> getUserData(@Query("search") String username);
 
-    //TODO:Post feed Items
     @Multipart
     @POST("feed/")
     Call<ResponseBody> postFeedItem(@Part("location") RequestBody location,
@@ -49,13 +49,18 @@ public interface UserClient {
     Call<FeedResult> getFeed(@Query("limit") Integer limit,
                              @Query("offset") Integer offset);
 
-    //Download Media
+
+    //TODO:Download Media
 //    @GET()
 //    Call<ResponseBody> getMedia(@Url String url);
 
-    //TODO:Add Friends
 
-    //TODO:Show friends list
+    //Get Friends List
+    @GET("friends/")
+    Call<FriendsResult> getFriends(@Query("limit") Integer limit,
+                                   @Query("offset") Integer offset);
+
+    //TODO:Add Friends
 
 
     //TODO:Send Requests
