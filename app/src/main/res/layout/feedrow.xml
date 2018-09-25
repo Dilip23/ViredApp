@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 
     <RelativeLayout
         android:id="@+id/postContainer"
         android:layout_margin="10dp"
         android:elevation="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_parent_rounded_corner">
+        android:layout_height="wrap_content">
         <!--TODO:Change to Circle Image View-->
         <ImageView
             android:id="@+id/profileImage"

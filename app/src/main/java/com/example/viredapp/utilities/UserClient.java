@@ -3,6 +3,7 @@ package com.example.viredapp.utilities;
 import com.example.viredapp.model.FeedResult;
 import com.example.viredapp.model.FriendsResult;
 import com.example.viredapp.model.Login;
+import com.example.viredapp.model.RequestResult;
 import com.example.viredapp.model.Result;
 import com.example.viredapp.model.User;
 import com.example.viredapp.model.UserSearchResult;
@@ -47,7 +48,7 @@ public interface UserClient {
 
     @GET("/feed/")
     Call<FeedResult> getFeed(@Query("limit") Integer limit,
-                             @Query("offset") Integer offset);
+                             @Query("offset") Long offset);
 
 
     //TODO:Download Media
@@ -66,6 +67,11 @@ public interface UserClient {
     //TODO:Send Requests
 
     //TODO:Show Requests
+    @GET("request-list/")
+    Call<RequestResult> getRequests(
+            @Query("limit")Integer limit,
+            @Query("offset")Integer offset
+    );
 
     //TODO:Likes for feed items
 

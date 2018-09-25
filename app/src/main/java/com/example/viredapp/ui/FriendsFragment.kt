@@ -35,7 +35,6 @@ class FriendsFragment : Fragment() {
         view.findViewById<RecyclerView>(R.id.friendsRecyclerView).adapter = adapter
         view.findViewById<RecyclerView>(R.id.friendsRecyclerView).layoutManager = LinearLayoutManager(MyApplication.getContext())
         subscribeUI(adapter,context)
-
         return view
 
     }
@@ -53,8 +52,7 @@ class FriendsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(FriendsViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }

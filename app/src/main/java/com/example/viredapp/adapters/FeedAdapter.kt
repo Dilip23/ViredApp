@@ -18,8 +18,7 @@ import kotlinx.android.synthetic.main.feedrow.view.*
 
 class FeedAdapter(val context:Context) : PagedListAdapter<feed, FeedAdapter.MyViewHolder>(FeedDiffCallBack()){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            val userPost = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.feedrow,parent,false)
+            val userPost = LayoutInflater.from(parent.context).inflate(R.layout.feedrow,parent,false)
             return MyViewHolder(userPost)
     }
 
@@ -52,17 +51,13 @@ class FeedAdapter(val context:Context) : PagedListAdapter<feed, FeedAdapter.MyVi
             userPic.visibility = View.GONE
             location.text = feed.location
             time.text = feed.timeStamp.toString()
-
             //Loading Feed post Image
             Glide
                     .with(post)
                     .load(feed.mUrl)
                     .into(post.postImage)
-
         }
-
     }
-
 }
 
 class FeedDiffCallBack : DiffUtil.ItemCallback<feed>() {

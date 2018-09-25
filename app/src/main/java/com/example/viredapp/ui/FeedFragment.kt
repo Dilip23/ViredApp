@@ -37,26 +37,21 @@ class FeedFragment : Fragment() {
         view.findViewById<RecyclerView>(R.id.feedView).adapter = adapter
         view.findViewById<RecyclerView>(R.id.feedView).layoutManager = LinearLayoutManager(MyApplication.getContext())
         subscribeUI(adapter,context)
-
-
         return view
     }
 
     private fun subscribeUI(adapter: FeedAdapter, context:Context) {
-        val factory = InjectorUtils.provideViewModelFactory(context)
+        val factory = InjectorUtils.provideFeedViewModel(context)
         viewModel = ViewModelProviders.of(this,factory).get(FeedViewModel::class.java)
         viewModel.showFeed().observe(this, object:Observer<PagedList<feed>>{
             override fun onChanged(t: PagedList<feed>?) {
                 adapter.submitList(t)
                 adapter.notifyDataSetChanged()
             }
-
         })
     }
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.viredapp.model;
 
+import com.example.viredapp.db.feed;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -16,7 +17,6 @@ public class FeedResult {
     @Expose
 
     private List<Feed> feedList;
-
 
     public int getCount() {
         return count;

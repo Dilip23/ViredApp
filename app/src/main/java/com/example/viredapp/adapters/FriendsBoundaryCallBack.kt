@@ -16,8 +16,6 @@ class FriendsBoundaryCallBack(
         private val cache:AppLocalCache
 ):PagedList.BoundaryCallback<Friends>(){
 
-    private var offset = 0
-
     companion object {
         private const val NETWORK_LIMIT = 50
         private val apiClient = ApiClient.getApiClient().create(UserClient::class.java)

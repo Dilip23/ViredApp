@@ -11,7 +11,7 @@ import com.example.viredapp.utilities.DateConverter
                 Friends::class,
                 Profile::class,
                 Request::class,
-                Likes::class],version = 6,
+                Likes::class],version = 10,
         exportSchema = false)
 
 public abstract class AppDatabase: RoomDatabase() {
