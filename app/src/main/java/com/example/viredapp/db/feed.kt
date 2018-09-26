@@ -13,7 +13,8 @@ import java.util.*
 
 @Entity(tableName = "feed")
 data class feed(
-        @PrimaryKey @field:SerializedName(value = "id") val id:Long,
+        @PrimaryKey(autoGenerate = true)val auto_id:Int,
+        @field:SerializedName(value = "id") val id:Int,
         @field:SerializedName(value = "username")@NonNull val username:String,
         @field:SerializedName(value = "mUrl")@NonNull val mUrl:String,
         @field:SerializedName(value = "timeStamp")@NonNull val timeStamp:String,

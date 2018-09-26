@@ -25,7 +25,7 @@ class RequestBoundaryCallBack(
     }
 
     override fun onItemAtEndLoaded(itemAtEnd: Request) {
-        requestAndSaveData(itemAtEnd.id)
+        requestAndSaveData(itemAtEnd.auto_id)
     }
 
     private fun requestAndSaveData(offset:Int){

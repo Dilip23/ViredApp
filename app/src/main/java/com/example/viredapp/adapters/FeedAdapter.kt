@@ -13,12 +13,13 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.viredapp.R
 import com.example.viredapp.db.feed
+import kotlinx.android.synthetic.main.feed_item.view.*
 
 import kotlinx.android.synthetic.main.feedrow.view.*
 
 class FeedAdapter(val context:Context) : PagedListAdapter<feed, FeedAdapter.MyViewHolder>(FeedDiffCallBack()){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            val userPost = LayoutInflater.from(parent.context).inflate(R.layout.feedrow,parent,false)
+            val userPost = LayoutInflater.from(parent.context).inflate(R.layout.feed_item,parent,false)
             return MyViewHolder(userPost)
     }
 
@@ -33,12 +34,12 @@ class FeedAdapter(val context:Context) : PagedListAdapter<feed, FeedAdapter.MyVi
 
     class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
         //Retrieve data
-        private val username:TextView = itemView.post_name
+        private val username:TextView = itemView.username
 
-        private val userPic:ImageView = itemView.profileImage
-        private val location:TextView = itemView.postLocation
-        private val time:TextView = itemView.postTime
-        private val post:ImageView = itemView.postImage
+        private val userPic:ImageView = itemView.profilePic
+        private val location:TextView = itemView.location
+        private val time:TextView = itemView.timeStamp
+        private val post:ImageView = itemView.feedImage
 
         fun bind(feed: feed) = with(itemView){
                 showFeedData(feed)
@@ -55,7 +56,7 @@ class FeedAdapter(val context:Context) : PagedListAdapter<feed, FeedAdapter.MyVi
             Glide
                     .with(post)
                     .load(feed.mUrl)
-                    .into(post.postImage)
+                    .into(post.feedImage)
         }
     }
 }

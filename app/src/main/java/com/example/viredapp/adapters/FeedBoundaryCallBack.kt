@@ -28,11 +28,11 @@ class FeedBoundaryCallBack(private val cache: FeedLocalCache):PagedList.Boundary
 
     override fun onItemAtEndLoaded(itemAtEnd:feed) {
         Timber.i("onItemAtEndLoaded()")
-        var offset:Int = itemAtEnd.id.toInt()
-        requestAndSaveData(itemAtEnd.id)
+        var offset:Int = itemAtEnd.id
+        requestAndSaveData(offset)
     }
 
-    private fun requestAndSaveData(offset:Long){
+    private fun requestAndSaveData(offset:Int){
         val call: Call<FeedResult> = apiClient.getFeed(NETWORK_PAGE_SIZE,offset)
         call.enqueue(object:Callback<FeedResult>{
             override fun onFailure(call: Call<FeedResult>?, t: Throwable?) {
@@ -43,7 +43,7 @@ class FeedBoundaryCallBack(private val cache: FeedLocalCache):PagedList.Boundary
                 val res = response?.body()?.feedList
                 if (res != null) {
                     for (i in res){
-                        var feed = feed(i.id.toLong(),i.username,i.mUrl,i.timeStamp,i.location,i.likesCount.toString())
+                        var feed = feed(response?.body()?.count!!.minus(i.id),i.id,i.username,i.mUrl,i.timeStamp,i.location,i.likesCount.toString())
                         cache.insert(feed)
                     }
                 }

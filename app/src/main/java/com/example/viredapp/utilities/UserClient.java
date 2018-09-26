@@ -48,7 +48,7 @@ public interface UserClient {
 
     @GET("/feed/")
     Call<FeedResult> getFeed(@Query("limit") Integer limit,
-                             @Query("offset") Long offset);
+                             @Query("offset") Integer offset);
 
 
     //TODO:Download Media

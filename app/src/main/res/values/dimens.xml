@@ -37,6 +37,8 @@
     <dimen name="padding_10">10dp</dimen>
     <dimen name="margin_horizontal">16dp</dimen>
     <dimen name="lbl_edit_image_control">100dp</dimen>
+    <dimen name="feed_margin_left_timestamp">120dp</dimen>
+    <dimen name="feed_margin_top_timestamp">4dp</dimen>
 
 
 </resources>
