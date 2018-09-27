@@ -40,15 +40,3 @@ public abstract class AppDatabase: RoomDatabase() {
         }
     }
 
-//    fun getDatabase(context: Context): AppDatabase? {
-//        if(INSTANCE == null){
-//            synchronized(AppDatabase::class){
-//                if(INSTANCE==null){
-//                    INSTANCE = Room.databaseBuilder(context.applicationContext,
-//                            AppDatabase::class.java,"FeedDatabase")
-//                            .build()
-//                }
-//            }
-//        }
-//        return INSTANCE
-//    }
