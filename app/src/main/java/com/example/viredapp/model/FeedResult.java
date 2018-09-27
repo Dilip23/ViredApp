@@ -16,7 +16,7 @@ public class FeedResult {
     @SerializedName("results")
     @Expose
 
-    private List<Feed> feedList;
+    private List<feed> feedList;
 
     public int getCount() {
         return count;
@@ -26,11 +26,11 @@ public class FeedResult {
         this.count = count;
     }
 
-    public List<Feed> getFeedList() {
+    public List<feed> getFeedList() {
         return feedList;
     }
 
-    public void setFeedList(List<Feed> feedList) {
+    public void setFeedList(List<feed> feedList) {
         this.feedList = feedList;
     }
 }

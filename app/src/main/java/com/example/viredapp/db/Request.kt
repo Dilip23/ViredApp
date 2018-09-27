@@ -10,7 +10,7 @@ import java.util.*
 data class Request(
         @PrimaryKey(autoGenerate = true) val auto_id:Int,
         @field:SerializedName(value = "id")val id:Int,
-        @field:SerializedName(value = "user_id")val user_id:Int,
+        @field:SerializedName(value = "user_id")val user_id:String,
         @field:SerializedName(value = "requested_id")val requested_id:Int,
         @field:SerializedName(value = "sent_on")val sent_on:Date
         

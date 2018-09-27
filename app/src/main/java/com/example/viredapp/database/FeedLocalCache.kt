@@ -12,7 +12,7 @@ class FeedLocalCache(
         private val ioExecutor: Executor
 ){
 
-    fun insert(feed:feed){
+    fun insert(feed:List<feed>){
         ioExecutor.execute {
             Timber.d("inserting ${feed} feedItem")
             feedDao.insert(feed)

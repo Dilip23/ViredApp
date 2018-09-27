@@ -16,7 +16,7 @@ data class feed(
         @PrimaryKey(autoGenerate = true)val auto_id:Int,
         @field:SerializedName(value = "id") val id:Int,
         @field:SerializedName(value = "username")@NonNull val username:String,
-        @field:SerializedName(value = "mUrl")@NonNull val mUrl:String,
+        @field:SerializedName(value = "m_url")@NonNull val mUrl:String,
         @field:SerializedName(value = "timeStamp")@NonNull val timeStamp:String,
         @field:SerializedName(value = "location")val location:String?,
         @field:SerializedName(value = "likes_count")@NonNull val likes_count:String

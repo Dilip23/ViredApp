@@ -9,7 +9,7 @@ interface FeedDao{
 
     //Post feed item
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(feed:feed)
+    fun insert(feed:List<feed>)
 
     //Update feed item
     @Update(onConflict = OnConflictStrategy.IGNORE)
