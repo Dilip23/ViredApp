@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
@@ -43,6 +43,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     //Navigation
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha04'
     def nav_version = "1.0.0-alpha04"
@@ -50,46 +51,53 @@ dependencies {
 
     //BottomNavigationViewEx
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
-    implementation "com.android.support:design:27.1.1"
+    implementation 'com.android.support:design:27.1.1'
+
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
     //Room
     def room_version = "1.1.1"
-
     implementation "android.arch.persistence.room:runtime:$room_version"
-    kapt "android.arch.persistence.room:compiler:$room_version" // use kapt for Kotlin
+    kapt "android.arch.persistence.room:compiler:$room_version"
+
+    // use kapt for Kotlin
 
     //Paging
     def paging_version = "1.0.0"
-
     implementation "android.arch.paging:runtime:$paging_version"
 
     //WorkManager
     def work_version = "1.0.0-alpha05"
+    implementation "android.arch.work:work-runtime:$work_version"
 
-    implementation "android.arch.work:work-runtime:$work_version" // use -ktx for Kotlin
+    // use -ktx for Kotlin
 
     //LifeCycle
     def lifecycle_version = "1.1.1"
 
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
     // alternatively - just ViewModel
-    implementation "android.arch.lifecycle:viewmodel:$lifecycle_version" // use -ktx for Kotlin
+    implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"
+
+    // use -ktx for Kotlin
+
     // alternatively - just LiveData
     implementation "android.arch.lifecycle:livedata:$lifecycle_version"
+
     // alternatively - Lifecycles only (no ViewModel or LiveData).
+
     //     Support library depends on this lightweight import
     implementation "android.arch.lifecycle:runtime:$lifecycle_version"
-
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
     implementation 'com.karumi:dexter:4.2.0'
 
     //Recycler View
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-
 
     //Dexter M Permissions
     implementation 'com.karumi:dexter:4.1.0'
@@ -108,7 +116,8 @@ dependencies {
 
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
-
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.3'
+    implementation files('libs/CircleImageView-master/CircleImageView-master/gradle/wrapper/gradle-wrapper.jar')
 
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

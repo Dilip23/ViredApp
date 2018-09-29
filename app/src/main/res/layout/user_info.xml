@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
+    
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/phoebe"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"/>
+        android:src="@drawable/rachel"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        app:civ_border_width="2dp"
+        />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phoebe"
-        android:fontFamily="@font/sf_pro_display_regular"
+        android:fontFamily="@font/sf_pro_display_semibold"
         android:textSize="24sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="150dp"/>
@@ -29,18 +30,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="phoebe@gmail.com"
-        android:textSize="15sp"
+        android:textSize="25sp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/sf_pro_display_light"
-        android:layout_marginLeft="127dp"/>
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New York"
-        android:layout_marginLeft="152dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
         android:fontFamily="@font/sf_pro_display_semibold"
-        android:textSize="15sp"/>
+        android:textSize="18sp"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -54,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="Friends"
         android:textSize="18sp"
-        android:fontFamily="@font/sf_pro_display_light"
+        android:fontFamily="@font/sf_pro_display_medium"
         android:layout_marginLeft="135dp"
         />
 

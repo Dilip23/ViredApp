@@ -23,13 +23,10 @@
             android:paddingLeft="@dimen/feed_item_padding_left_right"
             android:paddingRight="@dimen/feed_item_padding_left_right">
 
-            <ImageView
-                android:id="@+id/profilePic"
-                android:layout_width="@dimen/feed_item_profile_pic"
-                android:layout_height="@dimen/feed_item_profile_pic"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:background="@drawable/phoebe"/>
+          <de.hdodenhof.circleimageview.CircleImageView
+              android:src="@drawable/phoebe"
+              android:layout_width="50dp"
+              android:layout_height="50dp" />
             
             <LinearLayout
                 android:layout_width="wrap_content"
