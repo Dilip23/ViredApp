@@ -24,6 +24,7 @@
             android:paddingRight="@dimen/feed_item_padding_left_right">
 
           <de.hdodenhof.circleimageview.CircleImageView
+              android:id="@+id/profilePic"
               android:src="@drawable/phoebe"
               android:layout_width="50dp"
               android:layout_height="50dp" />

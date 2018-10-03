@@ -9,12 +9,9 @@ import com.example.viredapp.database.RequestLocalCache
 import com.example.viredapp.model.FeedViewModelFactory
 import com.example.viredapp.model.FriendsViewModelFactory
 import com.example.viredapp.model.RequestViewModelFactory
-import com.example.viredapp.model.UserViewModelFactory
 import com.example.viredapp.services.FeedRepository
 import com.example.viredapp.services.FriendsRepository
 import com.example.viredapp.services.RequestRepository
-import com.example.viredapp.services.UserRepository
-import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 object InjectorUtils{
@@ -33,15 +30,9 @@ object InjectorUtils{
     }
 
 
-    private fun getUserRepository(context: Context):UserRepository{
-        return UserRepository()
-    }
 
-    fun provideUserViewModel(context: Context):ViewModelProvider.Factory{
-        return UserViewModelFactory(getUserRepository(context))
-    }
 
-    /*
+    /**
     * Create an instance of [AppLocalCache]
     * */
     private fun provideCache(context: Context):AppLocalCache{
@@ -57,7 +48,7 @@ object InjectorUtils{
         return FriendsViewModelFactory(provideFriendsRepository(context))
     }
 
-    /*
+    /**
     * Create an instance of [RequestLocalCache]
     * */
     private fun provideRequestCache(context: Context):RequestLocalCache{
@@ -65,7 +56,7 @@ object InjectorUtils{
         return RequestLocalCache(database.requestDao(), Executors.newSingleThreadExecutor())
     }
 
-    private fun provideRequestRepository(context: Context):RequestRepository{
+     fun provideRequestRepository(context: Context):RequestRepository{
         return RequestRepository(provideRequestCache(context))
     }
 

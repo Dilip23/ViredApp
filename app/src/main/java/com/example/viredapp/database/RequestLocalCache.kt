@@ -7,6 +7,10 @@ import com.example.viredapp.db.RequestDao
 import timber.log.Timber
 import java.util.concurrent.Executor
 
+/**
+* Cache methods to execute on BackGround Thread using Executors.
+* */
+
 class RequestLocalCache(
         private val requestDao: RequestDao,
         private val ioExecutor: Executor
@@ -23,16 +27,13 @@ class RequestLocalCache(
         return requestDao.showPendingRequests()
     }
 
-    fun acceptRequest(request: Request){
+
+    /**
+     * Cache Delete Call
+     * */
+    fun acceptRequest(id: Int){
         ioExecutor.execute {
-            requestDao.acceptRequest(request)
+            requestDao.acceptRequest(id)
         }
     }
-
-    fun updateSpamRequest(request: Request){
-        ioExecutor.execute {
-            requestDao.spamRequest(request)
-        }
-    }
-
 }

@@ -5,23 +5,25 @@ import android.arch.paging.DataSource
 import android.arch.paging.PagedList
 import android.arch.persistence.room.*
 
+/**
+ * Dao methods to handle Request Operations between Users
+ * */
+
 
 @Dao
 public interface RequestDao{
 
+
+    //Showing pending Requests sent to User
     @Query("SELECT * from Request")
     fun showPendingRequests():DataSource.Factory<Int,Request>
 
-    //Send Request to a user
+    //Insert Request to a user into Database
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(request: List<Request>)
 
     //Accept request from a user
-    @Delete
-    fun acceptRequest(request: Request)
-
-    //Change request to Spam
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun spamRequest(request: Request)
+    @Query("DELETE FROM Request WHERE id = :id")
+    fun acceptRequest(id:Int)
 
 }

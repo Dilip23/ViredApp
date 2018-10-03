@@ -41,7 +41,7 @@ public class UserAdapter extends ArrayAdapter<Result>{
         Result result = results.get(position);
 
         TextView textView = convertView.findViewById(R.id.username);
-        ImageView imageView = convertView.findViewById(R.id.userImage);
+        ImageView imageView = convertView.findViewById(R.id.profilePic);
 
         textView.setText(result.getUsername());
         Glide.with(context).load(result.getProfilePic()).into(imageView);

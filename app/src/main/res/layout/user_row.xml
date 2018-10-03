@@ -3,28 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
+    android:layout_marginLeft   ="10dp"
+    android:layout_marginRight  ="10dp"
+    android:layout_marginBottom ="10dp"
     android:background="@drawable/bg_parent_rounded_corner"
-    android:layout_height="wrap_content">
+    android:layout_marginTop="10dp"
+    android:layout_height="60dp">
 
 
-    <ImageView
-        android:id="@+id/userImage"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePic"
         android:src="@drawable/phoebe"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:layout_margin="@dimen/margin_horizontal"
-        />
+        android:layout_marginTop="5dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
     <TextView
-        android:layout_marginTop="25dp"
-
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Phoebe"
         android:textSize="18sp"
-        android:fontFamily="@font/sf_pro_display_regular"/>
+        android:fontFamily="@font/sf_pro_display_semibold"/>
 
 </LinearLayout>

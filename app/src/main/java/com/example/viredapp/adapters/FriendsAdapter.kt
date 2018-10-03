@@ -36,7 +36,7 @@ class FriendsAdapter(val context: Context):PagedListAdapter<Friends,FriendsAdapt
     class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView) {
 
         private val username:TextView = itemView.findViewById(R.id.username)
-        private val userImage:ImageView = itemView.findViewById(R.id.userImage)
+//        private val userImage:ImageView = itemView.findViewById(R.id.userImage)
 
         fun bind(friends: Friends) = with(itemView){
             showFriendsData(friends)
@@ -44,7 +44,7 @@ class FriendsAdapter(val context: Context):PagedListAdapter<Friends,FriendsAdapt
 
         private fun showFriendsData(friends: Friends){
             username.text = friends.friend_id
-            userImage.visibility = View.GONE
+//            userImage.visibility = View.GONE
 
         }
 

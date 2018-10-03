@@ -15,10 +15,12 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface UserClient {
@@ -65,6 +67,9 @@ public interface UserClient {
 
 
     //TODO:Send Requests
+    @DELETE("add/{id}/")
+    Call<ResponseBody> acceptRequest(@Path("id") Integer id);
+
 
     //TODO:Show Requests
     @GET("request-list/")

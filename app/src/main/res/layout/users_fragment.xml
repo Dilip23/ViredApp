@@ -3,11 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginRight="10dp"
     tools:context=".ui.UsersFragment">
-
-
   <ListView
       android:id="@+id/listView"
+      android:divider="@color/feed_bg"
       android:layout_width="match_parent"
+      android:scrollbars="vertical"
       android:layout_height="match_parent" />
 </FrameLayout>

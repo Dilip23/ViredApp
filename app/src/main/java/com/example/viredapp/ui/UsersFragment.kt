@@ -1,28 +1,18 @@
 package com.example.viredapp.ui
 
 import android.app.SearchManager
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.arch.paging.PagedList
 import android.content.Context
-import android.os.AsyncTask
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.MenuCompat.setShowAsAction
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
-import android.util.Log
 import android.view.*
+import android.widget.AdapterView
 import android.widget.ListView
 
 import com.example.viredapp.R
 import com.example.viredapp.adapters.UserAdapter
 import com.example.viredapp.model.Result
-import com.example.viredapp.model.UserSearchResult
-import com.example.viredapp.model.UserViewModelFactory
-import com.example.viredapp.model.UsersViewModel
-import com.example.viredapp.services.UserRepository
 import com.example.viredapp.utilities.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +26,6 @@ class UsersFragment : Fragment() {
         fun newInstance() = UsersFragment()
         val userClient = ApiClient.getApiClient().create(UserClient::class.java)
     }
-    private lateinit var viewModel: UsersViewModel
     private var searchView: SearchView? = null
     private lateinit var listView: ListView
     val executor = Executors.newSingleThreadExecutor()
@@ -47,15 +36,15 @@ class UsersFragment : Fragment() {
         val context = getContext() ?: return view
         listView = view.findViewById(R.id.listView)
         //viewModel = viewModel()
+        
+        listView.setOnItemClickListener(object :AdapterView.OnItemClickListener{
+            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val intent = Intent(context,UserActivity::class.java)
+                startActivity(intent)
+            }
+        })
 
         return  view
-    }
-
-
-
-    private fun viewModel():UsersViewModel {
-        val viewModelFactory = InjectorUtils.provideUserViewModel(context!!)
-        return ViewModelProviders.of(this,viewModelFactory)[UsersViewModel::class.java]
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
