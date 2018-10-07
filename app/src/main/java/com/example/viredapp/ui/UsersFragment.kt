@@ -13,6 +13,7 @@ import android.widget.ListView
 import com.example.viredapp.R
 import com.example.viredapp.adapters.UserAdapter
 import com.example.viredapp.model.Result
+import com.example.viredapp.model.User
 import com.example.viredapp.utilities.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,27 +30,14 @@ class UsersFragment : Fragment() {
     private var searchView: SearchView? = null
     private lateinit var listView: ListView
     val executor = Executors.newSingleThreadExecutor()
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view =  inflater.inflate(R.layout.users_fragment, container, false)
-        val context = getContext() ?: return view
+        val context = context ?: return view
         listView = view.findViewById(R.id.listView)
         //viewModel = viewModel()
-        
-        listView.setOnItemClickListener(object :AdapterView.OnItemClickListener{
-            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val intent = Intent(context,UserActivity::class.java)
-                startActivity(intent)
-            }
-        })
 
         return  view
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +52,7 @@ class UsersFragment : Fragment() {
        // searchView = SearchView((context as FeedActivity).supportActionBar?.themedContext
         //        ?: context)
         searchView!!.setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
-        searchView!!.isSubmitButtonEnabled
+        searchView.isSubmitButtonEnabled
         searchUser(searchView)
         /*
         searchItem.apply {
@@ -92,6 +80,12 @@ class UsersFragment : Fragment() {
                         * */
                         val userAdapter = UserAdapter(MyApplication.getContext(),resultList)
                         listView.adapter = userAdapter
+                        listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+                            val intent = Intent(context,UserActivity::class.java)
+                            intent.putExtra("user_id",userAdapter.getItem(position).pk)
+                            intent.putExtra("username",userAdapter.getItem(position).username)
+                            startActivity(intent)
+                        }
                     }
                 })
                 return true

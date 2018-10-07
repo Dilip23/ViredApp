@@ -24,5 +24,9 @@ class FriendsRepository (private val cache: AppLocalCache){
         return data
     }
 
+    fun getFriend(name:String): LiveData<Friends> {
+        return cache.getFriend(name)
+    }
+
 
 }

@@ -1,6 +1,10 @@
 package com.example.viredapp.database
 
+import android.annotation.SuppressLint
+import android.arch.lifecycle.LiveData
 import android.arch.paging.DataSource
+import android.icu.util.Freezable
+import android.os.AsyncTask
 import com.example.viredapp.db.FeedDao
 import com.example.viredapp.db.Friends
 import com.example.viredapp.db.FriendsDao
@@ -24,4 +28,8 @@ class AppLocalCache(
         return friendsDao.showFriends()
     }
 
+    fun getFriend(name:String): LiveData<Friends> {
+        return friendsDao.getFriend(name)
+
+    }
 }

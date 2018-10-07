@@ -3,6 +3,7 @@ package com.example.viredapp.utilities;
 import com.example.viredapp.model.FeedResult;
 import com.example.viredapp.model.FriendsResult;
 import com.example.viredapp.model.Login;
+import com.example.viredapp.model.RequestName;
 import com.example.viredapp.model.RequestResult;
 import com.example.viredapp.model.Result;
 import com.example.viredapp.model.User;
@@ -16,6 +17,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -37,7 +39,6 @@ public interface UserClient {
                                            @Part("password") RequestBody password,
                                            @Part("location") RequestBody location,
                                            @Part MultipartBody.Part profile_pic);
-
 
     //Retrieve User Data after first-time Login by searching
     @GET("profile/")
@@ -63,13 +64,11 @@ public interface UserClient {
     Call<FriendsResult> getFriends(@Query("limit") Integer limit,
                                    @Query("offset") Integer offset);
 
+
+
     //TODO:Add Friends
-
-
-    //TODO:Send Requests
     @DELETE("add/{id}/")
     Call<ResponseBody> acceptRequest(@Path("id") Integer id);
-
 
     //TODO:Show Requests
     @GET("request-list/")
@@ -78,10 +77,14 @@ public interface UserClient {
             @Query("offset")Integer offset
     );
 
-    //TODO:Likes for feed items
+    //TODO:Send Requests
+    @POST("request/")
+    Call<ResponseBody> sendRequest(@Body RequestName requestName);
 
 
-
+    //TODO:Get Profile Data
+    @GET("/profile/{id}/")
+    Call<Result> getProfile(@Path("id") Integer id);
 
 
 }

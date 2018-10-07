@@ -11,4 +11,6 @@ class FriendsViewModel(private val repository: FriendsRepository) : ViewModel() 
 
     fun observeFriends():LiveData<PagedList<Friends>> = repository.showFriends()
 
+    fun getFriend(name:String): LiveData<Friends> = repository.getFriend(name)
+
 }
